@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 if [ "$(whoami)" != "root" ]; then
 echo "You must be a root" && exit 0
 else

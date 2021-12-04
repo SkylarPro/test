@@ -12,7 +12,8 @@ if [ $config != "/etc/sysconfig/network-scripts/ifcfg-lo" ]; then
 ifcfg_file=$config
 fi
 done
-cp  $backup_dir/$ifcfg_file /etc/sysconfig/network-scripts
-
-sed -i "s/NETWORKING=.*/NETWORKING=yes/" /etc/sysconfig/network
+cp  $backup_dir/${ifcfg_file##*/} /etc/sysconfig/network-scripts
+systemctl restart network.service
+sudo dhclient 
+#sed -i "s/NETWORKING=.*/NETWORKING=yes/" /etc/sysconfig/network
 
